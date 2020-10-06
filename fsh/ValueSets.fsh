@@ -86,7 +86,7 @@ Description: "Identifies the type of recipient of the adjudication amount; i.e.,
 ValueSet: C4BBClaimProfessionalAndNonClinicianDiagnosisType 
 Title: "C4BB Claim Professional And Non Clinician Diagnosis Type"
 Description: "Indicates if the professional and non-clinician diagnosis is principal or secondary"
-* http://terminology.hl7.org/CodeSystem/ex-diagnosistype#principal "principal"
+* $HL7DiagnosisType#principal "principal"
 * C4BBClaimDiagnosisType#secondary "secondary"
 * ^copyright = "This Valueset is not copyrighted."
 
@@ -123,13 +123,38 @@ Description: "Used as the discriminator for the types of supporting information 
 * codes from system C4BBSupportingInfoType 
 * ^copyright = "This Valueset is not copyrighted."
 
-ValueSet: PatientIdentifierType
-Title: "Patient Identifier Type"
-Description: "Patient Identifier Type"
+// ************* @Saul - replaced with C4BB **************
+//ValueSet: PatientIdentifierType
+//Title: "Patient Identifier Type"
+//Description: "Patient Identifier Type"
+//* C4BBIdentifierType#um
+//* C4BBIdentifierType#mb
+//* $IdentifierType#MR
+//* C4BBIdentifierType#pt
+//* ^copyright = "This Valueset is not copyrighted."
+
+ValueSet: C4BBClaimIdentifierType
+Title: "C4BB Claim Identifier Type"
+Description: "Indicates that the claim identifier is that assigned by a payer for a claim received from a provider or subscriber"
+* C4BBIdentifierType#uc
+* ^copyright = "This Valueset is not copyrighted."
+
+ValueSet: C4BBPatientIdentifierType
+Title: "C4BB Patient Identifier Type"
+Description: "Identifies the type of identifier payers and providers assign to patients"
 * C4BBIdentifierType#um
-* C4BBIdentifierType#mb
-* $IdentifierType#MR
-* C4BBIdentifierType#pt
+* C4BBIdentifierType#pat
+* $IdentifierType#MB
+* $IdentifierType#MCR   // I think this should be #MR, medical record number
+* ^copyright = "This Valueset is not copyrighted."
+
+ValueSet: C4BBOrganizationIdentifierType
+Title: "C4BB Organization Identifier Type"
+Description: "Identifies the type of identifiers for organizations"
+* C4BBIdentifierType#npi
+* C4BBIdentifierType#payerid
+* C4BBIdentifierType#naiccode
+* codes from system $IdentifierType
 * ^copyright = "This Valueset is not copyrighted."
 
 ValueSet: C4BBClaimProcedureType 

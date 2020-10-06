@@ -5,7 +5,7 @@ Title: "C4BB Patient"
 Description: "This profile builds upon the US Core Organization profile. It is used to convey patient information about the patient who received the services described on the claim."
 * meta.lastUpdated 1..1 MS
 * meta.profile 1..* MS
-* identifier.type from PatientIdentifierType (extensible)
+* identifier.type from C4BBPatientIdentifierType (extensible)
 * identifier ^slicing.discriminator.path = "$this"
 * identifier ^slicing.rules = #open
 * identifier ^slicing.discriminator.type = #pattern 
@@ -16,13 +16,13 @@ Description: "This profile builds upon the US Core Organization profile. It is u
    medrecnum 0..* MS and
    uniquememberid 0..* MS and
    patacctnum 0..* MS 
-* identifier[memberid] ^patternIdentifier.type = C4BBIdentifierType#mb
+* identifier[memberid] ^patternIdentifier.type = $IdentifierType#MB
 * identifier[memberid] ^short = "Member ID"
 * identifier[memberid].type.coding 1..* MS
 * identifier[medrecnum] ^patternIdentifier.type = $IdentifierType#MR
 * identifier[medrecnum] ^short = "Medical Record Number"
 * identifier[medrecnum].type.coding 1..* MS
-* identifier[patacctnum] ^patternIdentifier.type = C4BBIdentifierType#pt
+* identifier[patacctnum] ^patternIdentifier.type = C4BBIdentifierType#pat
 * identifier[patacctnum] ^short = "Patient Account Number"
 * identifier[patacctnum].type.coding 1..* MS
 * identifier[uniquememberid] ^short = "Unique Member ID"
