@@ -29,10 +29,12 @@ jobs:
         run: npm install fsh-sushi --nosave
       - name: Run fsh-sushi
         run: cd fsh;../node_modules/.bin/sushi . ; ls -l build
-      - name: Update and run ig-publisher
-        run1: cd ./fsh/build; mkdir input-cache; ls -l ;./_updatePublisher.sh --force
-        run2: cd input-cache; rm publisher.jar; curl -L https://github.com/HL7/fhir-ig-publisher/releases/download/1.1.35/publisher.jar -O publisher.jar -o "publisher.jar" --create-dirs 
-        run3: ls -l ;./_updatePublisher.sh --force; ./_genonce.sh
+      - name: Download using updatePublisher.sh
+        run: cd ./fsh/build; mkdir input-cache; ls -l ;./_updatePublisher.sh --force
+      - name: Replace with v1.1.35 updatePublisher.sh
+        run: cd input-cache; rm publisher.jar; curl -L https://github.com/HL7/fhir-ig-publisher/releases/download/1.1.35/publisher.jar -O publisher.jar -o "publisher.jar" --create-dirs 
+      - name: Run genonce.sh
+        run: ls -l ;./_updatePublisher.sh --force; ./_genonce.sh
 #      - name: Run ig-publisher
  #       run: cd fsh/build && ./_genonce.sh
       - name: Push changes
